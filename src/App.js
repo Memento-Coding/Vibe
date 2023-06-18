@@ -2,8 +2,6 @@ import { Register } from './pages/Register';
 import { Login } from './pages/login';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import { LeftMenu } from './Components/LeftMenu';
-import { Header } from './Components/HeaderBar';
 
 
 function App() {
