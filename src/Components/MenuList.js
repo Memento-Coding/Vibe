@@ -8,7 +8,7 @@ const MenuList = [
     id: 1,
     icon: <BsFillHouseFill />,
     name: "Inicio",
-    hrfe: "/"
+    hrfe: "/inicio"
     },
     {
     id: 2,
