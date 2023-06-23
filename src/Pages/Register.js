@@ -1,12 +1,9 @@
 import "../Styles/register.css"
-import { NavLink, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import imagen from '../img/wave-sound.png';
-import GoogleLogin from 'react-google-login';
 import { useState } from "react";
 
-const responseGoogle = (response) => {
-    console.log(response);
-  }
+
 
 export function Register(){
   const [email, setEmail] = useState("");
@@ -40,15 +37,7 @@ export function Register(){
 
                 <div className="form-container1">
                   <div className="title1">Registrate gratis para escuchar.</div>
-                  <div className="google-register">
-                    <GoogleLogin className="ast"
-                            clientId="289577942642-hu6ead6b56bm76hpsd2gdp3hil3i4k2o.apps.googleusercontent.com"
-                            buttonText="Registrate con Google"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                    />
-                  </div>
+                  
                   <div class="crossed-lines1"></div>
                     
                     <div className="form1">
@@ -84,7 +73,7 @@ export function Register(){
                     </div>
                     <div class="crossed-lines1"></div>
 
-                    <NavLink className="linkregister1" to="/login">¿Ya tienes cuenta? Iniciar sesion</NavLink>
+                    <a href="/" className="linkregister1" >¿Ya tienes cuenta? Iniciar sesion</a>
                     
                     
 
