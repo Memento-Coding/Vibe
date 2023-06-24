@@ -49,6 +49,7 @@
 .google {
   border-radius: 40px;
   margin: 10px;
+  width: 400px;
 }
 
 .as {
@@ -111,6 +112,12 @@ p {
 /* Estilos adicionales para hacerlo responsive */
 
 @media (max-width: 768px) {
+
+  .google {
+    border-radius: 40px;
+    margin: 10px;
+    width: 93%;
+  }
   .as {
     width: 100%;
   }
