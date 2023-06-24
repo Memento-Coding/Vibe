@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom';
 
 function Menu({menuObject}) {
 
@@ -21,10 +20,10 @@ function Menu({menuObject}) {
                 menuObject && menuObject.map((menu) => (
                     <li>
                         {" "}
-                        <Link to={menu.hrfe}>
+                        <a href='#'>
                             <i>{menu.icon}</i>
                             <span>{menu.name}</span>
-                        </Link>
+                        </a>
                         
                         
                     </li>
