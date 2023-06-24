@@ -11,4 +11,4 @@ function Explorar() {
   )
 }
 
-export {Explorar}
+export { Explorar }

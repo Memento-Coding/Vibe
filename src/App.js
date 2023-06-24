@@ -9,6 +9,7 @@ import { Like } from './Pages/Like';
 import { Microfono } from './Pages/Microfono';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
+import { Perfil } from './Pages/Perfil';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/albums" element={<Albums />} />
           <Route path="/like" element={<Like />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/perfil" element={<Perfil />} />
           <Route path="/" element={<Login />} />
         </Routes>
       </Router>
