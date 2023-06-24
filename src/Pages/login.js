@@ -26,7 +26,7 @@ export function Login() {
     
 
     if (user === "" || password === "") {
-      setError("Todos los campos son obligatorios"); // Establece el mensaje de error en el estado error
+      setError("Todos los campos son obligatorios."); // Establece el mensaje de error en el estado error
     }
   };
 
