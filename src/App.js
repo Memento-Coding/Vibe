@@ -9,39 +9,22 @@ import { Like } from './Pages/Like';
 import { Microfono } from './Pages/Microfono';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
-
 import { Perfil } from './Pages/Perfil';
-import { AuthProvider } from './context/AuthContext';
-import { Auth } from './Components/auth/Auth';
-
 
 function App() {
   return (
-    <AuthProvider>
       <Router>
         <Routes>
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/microfono" element={<Microfono />} />
+          <Route path="/explorar" element={<Explorar />} />
+          <Route path="/albums" element={<Albums />} />
+          <Route path="/like" element={<Like />} />
           <Route path="/register" element={<Register />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/" element={<Login />} />
-          <Route path="/inicio" element={
-                  <Auth><Inicio /></Auth>
-                  } />
-          <Route path="/microfono" element={
-                  <Auth><Microfono /></Auth>
-                  } />
-          <Route path="/explorar" element={
-                  <Auth><Explorar /></Auth>
-                  } />
-          <Route path="/albums" element={
-                  <Auth><Albums /></Auth>
-                  } />
-          <Route path="/like" element={
-                  <Auth><Like /></Auth>
-                  } />
-        
         </Routes>
       </Router>
-    </AuthProvider>
   );
 }
 
