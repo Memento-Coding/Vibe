@@ -1,21 +1,32 @@
 import "../Styles/login.css";
 import imagen from '../img/wave-sound.png';
-import { NavLink, Link } from "react-router-dom";
-import GoogleLogin from 'react-google-login';
-import { useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../context/AuthContext";
 
 export function Login() {
+  const navigate = useNavigate();
+  const {login} = useContext(AuthContext);
+
+  const handelLogin =async () =>{
+    await login();
+    navigate('/inicio')
+  }
+
+
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
-    console.log(password);
+    //console.log(user);
+    //console.log(password);
+    
 
     if (user === "" || password === "") {
-      setError("Todos los campos son obligatorios"); // Establece el mensaje de error en el estado error
+      setError("Todos los campos son obligatorios."); // Establece el mensaje de error en el estado error
     }
   };
 
@@ -30,14 +41,7 @@ export function Login() {
         <div className="form-container">
           <div className="title">Iniciar sesion con Vibe</div>
           <div className="google">
-            <GoogleLogin
-              className="as"
-              clientId="289577942642-hu6ead6b56bm76hpsd2gdp3hil3i4k2o.apps.googleusercontent.com"
-              buttonText="Iniciar sesion con Google"
-              //onSuccess={responseGoogle}
-              //onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
+            <button onClick={handelLogin}><FaGoogle/>Google</button>
           </div>
           <div class="crossed-lines"></div>
 
@@ -73,9 +77,9 @@ export function Login() {
           </div>
           <div class="crossed-lines"></div>
 
-          <NavLink className="linkregister" to="/register">
+          <a href="/register"  className="linkregister" >
             ¿No tienes cuenta? Registrate aqui
-          </NavLink>
+          </a>
         </div>
       </div>
     </div>
