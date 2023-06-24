@@ -1,0 +1,147 @@
+.login-container {
+  font-family: Poppins;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(128, 29, 230, 1) 100%,
+    rgba(145, 75, 217, 1) 100%,
+    rgba(182, 94, 255, 1) 100%
+  );
+  color: #ffff;
+}
+
+.image,
+.title-logo {
+  display: inline-block;
+}
+
+.image {
+  width: 80px;
+  height: 30px;
+}
+
+.title-logo {
+  font-size: 45px;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.form-container {
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title {
+  font-size: 30px;
+  margin-left: 13.5%;
+  color: white;
+}
+
+.google {
+  border-radius: 40px;
+  margin: 10px;
+  width: 400px;
+}
+
+.as {
+  width: 400px;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+label {
+  color: white;
+  right: 100%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+
+input {
+  border-radius: 10px;
+  height: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: #290caa;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 93%;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.crossed-lines {
+  width: 100%;
+  max-width: 420px;
+  height: 1px;
+  background-color: white;
+  background-size: 8px 8px;
+}
+
+.linkregister {
+  margin-left: 20%;
+}
+
+p {
+  margin-left: 20%;
+}
+
+/* Estilos adicionales para hacerlo responsive */
+
+@media (max-width: 768px) {
+
+  .google {
+    border-radius: 40px;
+    margin: 10px;
+    width: 93%;
+  }
+  .as {
+    width: 100%;
+  }
+  
+  .title {
+    margin-left: 5%;
+  }
+  
+  .linkregister,
+  p {
+    margin-left: 10%;
+  }
+}
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+  
