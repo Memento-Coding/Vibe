@@ -18,8 +18,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={
-                    <Inicio />
+          <Route path="/inicio" element={
+                    <Auth><Inicio /></Auth>
                     } />
             <Route path="/microfono" element={
                     <Auth><Microfono /></Auth>
@@ -35,7 +35,7 @@ function App() {
                     } />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>
