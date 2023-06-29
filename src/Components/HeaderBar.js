@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import '../Styles/HeaderBar.css'
 import { BiSearchAlt } from 'react-icons/bi'
-import foto from '../img/foto-perfil.jpg'
 import { Link } from 'react-router-dom';
+import foto from '../img/foto-perfil.jpg'
 
 
 function Header() {
@@ -16,7 +16,7 @@ function Header() {
         </i>
       </div>
       <div className='perfil' onClick={() => {setOpen(!open)}}>
-        <img src={ foto }></img>
+        <img src={foto} alt='Perfil'></img>
       </div>
       <div className={`desplegable ${open ? 'active' : 'inactive'}`}>
         <ul>
@@ -24,7 +24,7 @@ function Header() {
             <Link to={"/perfil"}>Perfil</Link>
           </li>
           <li>
-            <a>Cerrar Sesión</a>
+            <Link to={"/login"}>Cerrar Sesión</Link>
           </li>
         </ul>
       </div>
