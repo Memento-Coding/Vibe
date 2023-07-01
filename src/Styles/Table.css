@@ -1,0 +1,11 @@
+.Container-table{
+    position: absolute;
+    
+    overflow-x: auto;
+    width: 80%;
+    height: 35%;
+    top: 360px;
+    left: 200px;
+}
+
+

@@ -2,26 +2,46 @@ import "../Styles/register.css"
 import {Link } from "react-router-dom";
 import imagen from '../img/wave-sound.png';
 import { useState } from "react";
+import axios from "axios";
 
 
 
 export function Register(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nameUser, setNameUser] = useState("");
+  const [username, setNameUser] = useState("");
   const [error, setError] = useState(""); 
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
-    console.log(nameUser)
+    setError(""); // Reiniciar el mensaje de error
 
-    if (email === "" || password === "" || nameUser==="") {
-      setError("Todos los campos son obligatorios"); 
+    if (email === "" || password === "" || username === "") {
+      setError("Todos los campos son obligatorios");
+      return; // Detener la ejecución si hay campos vacíos
     }
-  };
+
+    try {
+      // Objeto con los datos de registro
+      const datosRegistro = {
+        email,
+        password,
+        username,
+      };
+
+      // Realizar la petición POST a la API
+      const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/register", datosRegistro);
+
+      console.log(response.data); // Manejar la respuesta de la API
+
+      // Restablecer los campos del formulario
+      setEmail("");
+      setPassword("");
+      setNameUser("");
+    } catch (error) {
+      console.error(error); // Manejar errores en la petición
+    }
+  }
 
 
 
@@ -59,7 +79,7 @@ export function Register(){
                             <div className="input-container1">
                                 <label className="password">¿Como quieres que te llamemos?</label>
                                 <input type="text"
-                                 value={nameUser}
+                                 value={username}
                                  onChange={(e) => setNameUser(e.target.value)}
                                 required />
                             </div>

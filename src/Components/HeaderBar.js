@@ -4,6 +4,7 @@ import { BiSearchAlt } from 'react-icons/bi'
 
 function Header() {
   return (
+   
     <div className='headerBox'>
       <div className='buscar'>
         <input type='text' placeholder='Buscar...' />

@@ -4,6 +4,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 export function Login() {
   const navigate = useNavigate();
@@ -19,14 +20,36 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(user);
-    //console.log(password);
-    
+    console.log(user)
+    console.log(password)
+    setError(""); // Reiniciar el mensaje de error
 
     if (user === "" || password === "") {
-      setError("Todos los campos son obligatorios."); // Establece el mensaje de error en el estado error
+      setError("Todos los campos son obligatorios.");
+      return; 
+    }
+
+    try {
+      // Objeto con los datos de inicio de sesión
+      const datosLogin = {
+        user,
+        password,
+      };
+
+      // Realizar la petición POST a la API
+      const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login", datosLogin);
+
+      console.log(response.data); // Manejar la respuesta de la API
+
+      // Restablecer los campos del formulario
+      setUser("");
+      setPassword("");
+
+      
+    } catch (error) {
+      console.error(error); // Manejar errores en la petición
     }
   };
 
