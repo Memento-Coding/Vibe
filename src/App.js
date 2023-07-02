@@ -13,6 +13,7 @@ import { AuthProvider } from './context/AuthContext';
 import { Auth } from './Components/auth/Auth';
 import { Perfil } from './Pages/Perfil';
 
+
 function App() {
   return (
     <AuthProvider>

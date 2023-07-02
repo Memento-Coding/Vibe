@@ -18,6 +18,9 @@ const Card = ({ url }) => {
     }, []);
   
     return (
+
+      
+
       <div className="card">
         <img src={pokemon?.sprites?.front_default} alt={pokemon?.name} />
         <div className="data">
