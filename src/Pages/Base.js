@@ -7,9 +7,15 @@ import { BiSearchAlt } from 'react-icons/bi'
 import foto from '../img/foto-perfil.jpg'
 import { Link, Outlet } from 'react-router-dom';
 import { MusicPlayer } from '../Components/MusicPlayer'
+import { useNavigate } from 'react-router-dom';
 
 function Base() {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+
+  const navigateTo = (path) => {
+    navigate(path, { replace: true });
+  };
   return (
     <div className='Base'>
         <div className="leftmenu">
@@ -19,7 +25,7 @@ function Base() {
           
             </div>
 
-        <Menu menuObject={MenuList}/>
+        <Menu menuObject={MenuList} navigateTo={navigateTo}/>
         </div>
         <div className='contenido'>
             <div className='headerBox'>
@@ -38,7 +44,7 @@ function Base() {
                             <Link to={"/perfil"}>Perfil</Link>
                         </li>
                         <li>
-                            <a>Cerrar Sesión</a>
+                            <a href='#'>Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

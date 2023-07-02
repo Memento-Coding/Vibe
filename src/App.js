@@ -1,6 +1,3 @@
-
-//import { LeftMenu } from './Components/LeftMenu';
-//import { Header } from './Components/HeaderBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Explorar } from './Pages/Explorar';
 import { Albums } from './Pages/Albums';
@@ -9,7 +6,7 @@ import { Microfono } from './Pages/Microfono';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
 import { AuthProvider } from './context/AuthContext';
-import { Auth } from './Components/auth/Auth';
+//import { Auth } from './Components/auth/Auth';
 import { Perfil } from './Pages/Perfil';
 import { Base } from './Pages/Base';
 import { Inicio } from './Pages/Inicio';
