@@ -41,7 +41,7 @@ function Base() {
                 <div className={`desplegable ${open ? 'active' : 'inactive'}`}>
                     <ul>
                         <li className='dropdownItem'>
-                            <Link to={"/perfil"}>Perfil</Link>
+                            <Link to={"/inicio/perfil"}>Perfil</Link>
                         </li>
                         <li>
                             <a href='#'>Cerrar Sesión</a>

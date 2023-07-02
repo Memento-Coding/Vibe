@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Explorar } from './Pages/Explorar';
-import { Albums } from './Pages/Albums';
 import { Like } from './Pages/Like';
 import { Microfono } from './Pages/Microfono';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
 import { AuthProvider } from './context/AuthContext';
-//import { Auth } from './Components/auth/Auth';
+import { Auth } from './Components/auth/Auth';
 import { Perfil } from './Pages/Perfil';
 import { Base } from './Pages/Base';
 import { Inicio } from './Pages/Inicio';
@@ -17,26 +16,26 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Base />}>
-          <Route path="/" element={
-                    <Inicio />
+          <Route path="/inicio" element={<Auth><Base /></Auth>}>
+            <Route path="/inicio" element={
+                    <Auth><Inicio /></Auth>
                     } />
-            <Route path="/microfono" element={
-                    <Microfono />
-                    } />
-            <Route path="/explorar" element={
+            <Route path="/inicio/explorar" element={
                     <Explorar />
                     } />
-            <Route path="/albums" element={
-                    <Albums />
-                    } />
-            <Route path="/like" element={
+            <Route path="/inicio/like" element={
                     <Like />
                     } />
-          </Route>           
-          <Route path="/perfil" element={<Perfil />} />
+            <Route path="/inicio/microfono" element={
+                    <Microfono />
+                    } />  
+            <Route path="/inicio/perfil" element={<Perfil />} />
+            
+          </Route>
+                   
+          
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>
@@ -44,3 +43,5 @@ function App() {
 }
 
 export default App;
+
+

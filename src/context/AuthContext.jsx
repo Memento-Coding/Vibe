@@ -25,6 +25,8 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
 
+  console.log(userLoading);
+
   const login = async () => {
     const googleProvider = new GoogleAuthProvider();
     await signInWithPopup(auth, googleProvider);
