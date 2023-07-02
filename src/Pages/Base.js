@@ -6,7 +6,6 @@ import '../Styles/HeaderBar.css'
 import { BiSearchAlt } from 'react-icons/bi'
 import foto from '../img/foto-perfil.jpg'
 import { Link, Outlet } from 'react-router-dom';
-import { MusicPlayer } from '../Components/MusicPlayer'
 import { useNavigate } from 'react-router-dom'
 
 function Base() {

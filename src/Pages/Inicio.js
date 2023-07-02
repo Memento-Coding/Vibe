@@ -3,6 +3,7 @@ import "../Styles/Inicio.css"
 import axios from 'axios'
 import { FaHeadphones, FaHeart, FaRegHeart } from 'react-icons/fa'
 import { MusicPlayer } from '../Components/MusicPlayer'
+import fotoInfo from '../img/info.jpg'
 
 
 function Inicio() {
@@ -35,6 +36,19 @@ function Inicio() {
 
   return (
         <div className='mainInicio'>
+          <div className='information'>
+            <div className='infoImage'>
+              <img src={ fotoInfo } alt=''></img>
+            </div>
+            <div className='title'>
+              <h4>Tomorrow's tunes</h4>
+            </div>
+            <div className='text'>
+              Lorem ipsum dolor sit amet, consectur
+              adipiscing elit ut aliquam, venenatis <br/>
+              64 songs - 16hrs+
+            </div>
+          </div>
           <div className='audioList'>
             <h2 className='title'>
               Track of the week
@@ -78,6 +92,7 @@ function Inicio() {
             
             
           </div>
+          
           <MusicPlayer song={song} img={img}/>
         </div>
   )
