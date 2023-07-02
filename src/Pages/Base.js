@@ -16,6 +16,7 @@ function Base() {
   const navigateTo = (path) => {
     navigate(path, { replace: true });
   };
+
   return (
     <div className='Base'>
         <div className="leftmenu">
@@ -44,7 +45,7 @@ function Base() {
                             <Link to={"/inicio/perfil"}>Perfil</Link>
                         </li>
                         <li>
-                            <a href='#'>Cerrar Sesión</a>
+                            <Link to={"/"}>Cerrar Sesión</Link>
                         </li>
                     </ul>
                 </div>
