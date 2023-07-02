@@ -5,37 +5,79 @@ import { BsDownload } from 'react-icons/bs';
 
 
 
-function MusicPlayer({ song, imgSrc }) {
+function MusicPlayer({ song, img }) {
 
   const [isLove, setLoved] = useState(false);
   const [isPlaying, setPlaying] = useState(false);
-  const [duration, setDuration] = useState(0)
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const audioPlayer = useRef();
   const progresBar = useRef();
+  const animationRef = useRef();
 
   useEffect(() =>{
-    const seconds = audioPlayer.current.duration;
-  }, [audioPlayer?.current, audioPlayer?.current?.readyState,])
+    const seconds = Math.floor(audioPlayer.current.duration);
+    setDuration(seconds);
+    progresBar.current.max = seconds;
+  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState,]);
 
+  
+
+  const changePlayPause = () => {
+    const prevValue = isPlaying;
+    setPlaying(!prevValue);
+
+    if(!prevValue){
+      audioPlayer.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
+    }else{
+      audioPlayer.current.pause();
+      cancelAnimationFrame(animationRef.current);
+    }
+    
+  }
+
+  const whilePlaying = () =>{
+    progresBar.current.value = audioPlayer.current.currentTime;
+    changeCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  };
+
+  const CalculateTime = (sec) => {
+    const minutes = Math.floor(sec / 60);
+    const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    
+    const seconds = Math.floor(sec % 60);
+    const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+    return `${returnMin}:${returnSec}`;
+  };
+
+  const changeProgress = () => {
+    audioPlayer.current.currentTime = progresBar.current.value;
+
+    changeCurrentTime();
+  
+  };
+
+  const changeCurrentTime = () => {
+    progresBar.current.style.setProperty("--player-width", `${(progresBar.current.value / duration) * 100}%`
+    );
+
+    setCurrentTime(progresBar.current.value);
+  };
   const changeLoved = () => {
     setLoved(!isLove);
   
   }
 
-  const changePlayPause = () => {
-    const prevValue = isPlaying;
-    if(!prevValue){
-      audioPlayer.current.play();
-    }else{
-      audioPlayer.current.pause();
-    }
-    setPlaying(!prevValue);
-  }
+  
 
   return (
     <div className='musicPlayer'>
       <div className='songImage'>
+        <img src={img} alt=''></img>
       </div>
       <div className='songAtributos'>
         <audio src={song} preload='metadata' ref={audioPlayer}/>
@@ -70,9 +112,11 @@ function MusicPlayer({ song, imgSrc }) {
           </div>
         </div>
         <div className='bottom'>
-          <div className='curretnTime'>00:00</div>
-          <input type='range' className='progresBar' ref={progresBar}/>
-          <div className='duration'>00:00</div>
+          <div className='curretnTime'>{CalculateTime(currentTime)}</div>
+          <input type='range' className='progresBar' ref={progresBar} defaultValue="0" onChange={changeProgress} />
+          <div className='duration'>
+            {duration && !isNaN(duration) && CalculateTime(duration) ? duration && !isNaN(duration) && CalculateTime(duration) : "00:00"}
+          </div>
         </div>
       </div>
     </div>

@@ -2,10 +2,21 @@ import React, { useEffect, useState }  from 'react'
 import "../Styles/Inicio.css"
 import axios from 'axios'
 import { FaHeadphones, FaHeart, FaRegHeart } from 'react-icons/fa'
+import { MusicPlayer } from '../Components/MusicPlayer'
+
 
 function Inicio() {
   const [song5, setSong5] = useState([]);
+  const [song,  setSong] = useState(song5[0]?.file);
+  const [img, setImage] = useState(song5[0]?.photo);
+
+  const setMainSong = (songSrc, imgSrc) => {
+    setSong(songSrc);
+    setImage(imgSrc);
+
+  };
   
+
     useEffect(() => {
       const getSong5 = async () => {
         try {
@@ -30,8 +41,8 @@ function Inicio() {
             </h2>
             <div className='songsContainer'>
               {song5.map((song) =>(
-                <div className='songs'>
-                  <div className='song'>
+                <div className='songs' onClick={() => setMainSong(song?.file, song?.photo)}>
+                  <div className='song'> 
                     <div className='imgBox'>
                       <img src={song?.photo} alt={song?.name}></img>
                     </div>
@@ -47,8 +58,15 @@ function Inicio() {
                           311k
                         </p>
                         <div className='favorite'>
-                          <i><FaHeart/></i>
-                          <i><FaRegHeart/></i>
+                          {
+                            song?.favorite ?(
+                              <i><FaHeart/></i>
+                            ) : (
+                              <i><FaRegHeart/></i>
+                            )
+                          }
+                          
+                          
                         </div>
                       </div>
                     </div>
@@ -60,8 +78,8 @@ function Inicio() {
             
             
           </div>
+          <MusicPlayer song={song} img={img}/>
         </div>
-    
   )
 
 }

@@ -11,8 +11,6 @@
   width: 100%;
   height: 72vh;
   display: flex;
-  overflow-x: scroll;
-  overflow-y: scroll;
 }
 
 @media screen and (max-width: 550px) {
@@ -37,7 +35,25 @@
 .songsContainer{
   height: 200px;
   width: 280px;
-  overflow: auto;
+  overflow: auto; /* Mostrar el scrollbar solo cuando sea necesario */
+  scrollbar-width: thin; /* Ancho del scrollbar */
+  scrollbar-color: transparent transparent; /* Color del thumb y del track */
+
+  /* Ocultar el scrollbar */
+  -ms-overflow-style: none; /* Para IE y Edge */
+  scrollbar-width: none; /* Para Firefox */
+}
+
+.songsContainer::-webkit-scrollbar {
+  width: 0.5em; /* Ancho del scrollbar */
+}
+
+.songsContainer::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Color del thumb */
+}
+
+.songsContainer::-webkit-scrollbar-track {
+  background-color: transparent; /* Color del track */
 }
 
 .songs{

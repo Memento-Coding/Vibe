@@ -92,6 +92,7 @@
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
+    overflow: hidden;
 }
 
 /* Chrome y Safari*/
@@ -101,7 +102,7 @@
     top: 0;
     left: 0;
     background: #801de6;
-    width: 50%;
+    width: var(--player-width);
     height: 100%;
     border-radius: 10px;
     z-index: 2;
@@ -131,7 +132,7 @@
 
 .songAtributos .bottom .progresBar::-moz-range-progress{
     background: #801de6;
-    width: 50%;
+    width: var(--player-width);
     height: 100%;
     border-radius: 10px;
     z-index: 2;
