@@ -2,7 +2,6 @@
 //import { LeftMenu } from './Components/LeftMenu';
 //import { Header } from './Components/HeaderBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Inicio } from './Pages/Inicio';
 import { Explorar } from './Pages/Explorar';
 import { Albums } from './Pages/Albums';
 import { Like } from './Pages/Like';
@@ -12,6 +11,8 @@ import { Register } from './Pages/Register';
 import { AuthProvider } from './context/AuthContext';
 import { Auth } from './Components/auth/Auth';
 import { Perfil } from './Pages/Perfil';
+import { Base } from './Pages/Base';
+import { Inicio } from './Pages/Inicio';
 
 
 function App() {
@@ -19,21 +20,23 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
+          <Route path="/" element={<Base />}>
           <Route path="/" element={
                     <Inicio />
                     } />
             <Route path="/microfono" element={
-                    <Auth><Microfono /></Auth>
+                    <Microfono />
                     } />
             <Route path="/explorar" element={
-                    <Auth><Explorar /></Auth>
+                    <Explorar />
                     } />
             <Route path="/albums" element={
-                    <Auth><Albums /></Auth>
+                    <Albums />
                     } />
             <Route path="/like" element={
-                    <Auth><Like /></Auth>
+                    <Like />
                     } />
+          </Route>           
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
