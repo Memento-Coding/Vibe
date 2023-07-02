@@ -1,3 +1,13 @@
+.Base{
+    display: flex;
+}
+
+.contenido{
+    width: 100%;
+    height: 100%;
+}
+
+
 .leftmenu{
     width: 185px;
     height: 100%;
