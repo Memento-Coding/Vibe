@@ -4,6 +4,7 @@ import axios from 'axios'
 import { FaHeadphones, FaHeart, FaRegHeart } from 'react-icons/fa'
 import { MusicPlayer } from '../Components/MusicPlayer'
 import fotoInfo from '../img/info.jpg'
+import { BsPlayCircleFill } from 'react-icons/bs'
 
 
 function Inicio() {
@@ -11,11 +12,26 @@ function Inicio() {
   const [song,  setSong] = useState(song5[0]?.file);
   const [img, setImage] = useState(song5[0]?.photo);
 
+  const [song6, setSong6] = useState([]);
+
   const setMainSong = (songSrc, imgSrc) => {
     setSong(songSrc);
     setImage(imgSrc);
 
   };
+
+  useEffect(() => {
+    const getSong6 = async () => {
+      try {
+      const response = await axios.get('https://thriving-insect-production.up.railway.app/v1/song?count=6');
+      const data6 = response.data;
+      setSong6(data6);
+      } catch (error) {
+        console.error('Error fetching songs', error);
+      }
+    };
+    getSong6();
+  },[]);
   
 
     useEffect(() => {
@@ -91,6 +107,24 @@ function Inicio() {
             </div>
             
             
+          </div>
+          <div className='songCard'>
+            {song6.map((song) =>(
+                <div className='songs' onClick={() => setMainSong(song?.file, song?.photo)}>
+                  <div className='song'> 
+                    <div className='imgBox'>
+                      <img src={song?.photo} alt={song?.name}></img>
+                    </div>
+                    <div className='section'>
+                      <p>{song?.name}<br/>{song.artist}</p>
+                      <i>
+                        <BsPlayCircleFill/>
+                      </i>
+                    </div>
+                  </div>
+                </div>
+
+              ))}
           </div>
           
           <MusicPlayer song={song} img={img}/>

@@ -5,7 +5,7 @@ import { Microfono } from './Pages/Microfono';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
 import { AuthProvider } from './context/AuthContext';
-import { Auth } from './Components/auth/Auth';
+//import { Auth } from './Components/auth/Auth';
 import { Perfil } from './Pages/Perfil';
 import { Base } from './Pages/Base';
 import { Inicio } from './Pages/Inicio';
@@ -16,9 +16,9 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/inicio" element={<Auth><Base /></Auth>}>
-            <Route path="/inicio" element={
-                    <Auth><Inicio /></Auth>
+          <Route path="/" element={<Base />}>
+            <Route path="/" element={
+                    <Inicio />
                     } />
             <Route path="/inicio/explorar" element={
                     <Explorar />
@@ -35,7 +35,7 @@ function App() {
                    
           
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>

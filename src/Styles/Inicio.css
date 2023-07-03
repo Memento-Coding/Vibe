@@ -84,6 +84,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
 .song .imgBox{
@@ -163,4 +164,40 @@
   font-size: 13px;
 }
 
+.songCard{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: center;
+}
 
+.songCard .songs{
+  width: 140px;
+  height: 180px;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.songCard .song{
+  display: block;
+  width: fit-content;
+  align-items: center;
+  
+}
+
+.songCard .song .imgBox {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 8px;
+}
+
+.songCard .song .section p{
+  margin: 0;
+}
+
+.songCard .song .section {
+  height: 40px;
+  width: 100%;
+}
