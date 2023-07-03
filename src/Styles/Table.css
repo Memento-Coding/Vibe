@@ -1,0 +1,45 @@
+.Container-table {
+    position: absolute;
+    overflow: auto;
+    scrollbar-width: thin; 
+  scrollbar-color: transparent transparent; 
+
+  
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+    width: 80%;
+    height: 35%;
+    top: 360px;
+    left: 200px;
+  }
+
+  .Container-table::-webkit-scrollbar{
+    width: 0.5em;
+
+  }
+
+  .Container-table::-webkit-scrollbar-thumb{
+    background-color: transparent;
+  }
+  .Container-table::-webkit-scrollbar-track{
+    background-color: transparent;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Container-table {
+      width: 90%;
+      height: 40%;
+      top: 320px;
+      left: 20%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .Container-table {
+      width: 95%;
+      height: 50%;
+      top: 280px;
+      left: 20%;
+    }
+  }
+  

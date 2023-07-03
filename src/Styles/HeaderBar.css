@@ -1,13 +1,24 @@
+.dd{
+    width: 100px;
+    height: 100px;
+    background: blue;
+}
+
 .headerBox{
     width: 100%;
-    height: 64px;
-    padding: 20px;
+    height: 80px;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
     
 }
 
 .buscar{
     padding: 0;
-    width: 70%;
+    margin-top: 10px;
+    width: 85%;
+    height: 40px;
     position: relative;
     color: grey;
     overflow: hidden;
@@ -39,3 +50,81 @@
     font-size: 20px;
 }
 
+.perfil{
+    height: 60px;
+    width: 60px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.perfil img{
+    height: 60px;
+    width: 60px;
+    border-radius: 20%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.desplegable{
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background: #0D0D0D;
+    padding: 10px 20px;
+    width: 200px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.desplegable::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    background: #0D0D0D;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    transform: rotate(45deg);
+}
+
+.desplegable.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: var(--speed) ease;
+}
+.desplegable.inactive{
+    opacity: 1;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--speed) ease;
+}
+
+.desplegable ul li a {
+    text-decoration: none;
+    color: grey;
+}
+
+.desplegable ul li {
+    list-style: none;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.desplegable ul li:hover a{
+    color: #801de6;
+    cursor: pointer;
+}
+
+.dropdownItem{
+    display: flex;
+    margin: 10px auto;
+}
+
+.dropdownItem a{
+    max-width: 100px;
+    transition: var(--speed);
+}
