@@ -2,10 +2,15 @@ import React from 'react';
 import '../Styles/Table.css';
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
-import { Delete, Edit, PlayArrow } from '@material-ui/icons';
+
+import { AiFillDelete, AiFillEdit  } from 'react-icons/ai';
+import { FaPlay } from 'react-icons/fa';
+
 
 function Table() {
   const customTheme = createTheme({
+
+    
     // Configuración del tema personalizado
   });
 
@@ -26,15 +31,15 @@ function Table() {
       title: 'Acciones',
       render: (rowData) => (
         <>
-          <PlayArrow
+          <FaPlay
             onClick={() => handleIconClick(rowData.titulo, 'Play')}
             style={{ cursor: 'pointer' }}
           />
-          <Edit
+          <AiFillEdit
             onClick={() => handleIconClick(rowData.titulo, 'Editar')}
             style={{ cursor: 'pointer' }}
           />
-          <Delete
+          <AiFillDelete
             onClick={() => handleIconClick(rowData.titulo, 'Eliminar')}
             style={{ cursor: 'pointer' }}
           />
