@@ -201,3 +201,43 @@
   height: 40px;
   width: 100%;
 }
+
+.slider{
+  position: absolute;
+  top: 99px;
+  left: 236px;
+  /*background-color: blue;*/
+  width: 503px;
+  height: 215px;
+  padding: 15px;
+  cursor: pointer;
+}  
+
+.slider .songs2{
+  width: 140px;
+  height: 180px;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+.slider .song2{
+  display: block;
+  width: fit-content;
+  align-items: center;
+  
+}
+
+.slider .song2 .imgBox2 {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 8px;
+}
+
+.slider .song2 .section2 p{
+  margin: 0;
+}
+
+.slider .song2 .section2 {
+  height: 40px;
+  width: 100%;
+}
