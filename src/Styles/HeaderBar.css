@@ -77,7 +77,7 @@
     content: '';
     position: absolute;
     top: -5px;
-    right: 20px;
+    right: 70px;
     height: 20px;
     width: 20px;
     background: #0D0D0D;
@@ -91,6 +91,7 @@
     visibility: visible;
     transform: translateY(0);
     transition: var(--speed) ease;
+    z-index: 2;
 }
 .desplegable.inactive{
     opacity: 1;

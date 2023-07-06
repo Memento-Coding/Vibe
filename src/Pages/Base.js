@@ -12,6 +12,17 @@ function Base() {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    const handleLogout = () => {
+  
+        localStorage.removeItem("token");
+        localStorage.removeItem("decodedToken");
+    
+    
+        navigate("/");
+    
+      
+      };
+
 
   const navigateTo = (path) => {
     navigate(path, { replace: true });
@@ -44,7 +55,7 @@ function Base() {
                             <Link to={"/inicio/perfil"}>Perfil</Link>
                         </li>
                         <li>
-                            <a href='#'>Cerrar Sesión</a>
+                            <a onClick={handleLogout}>Cerrar sesión</a>
                         </li>
                     </ul>
                 </div>
