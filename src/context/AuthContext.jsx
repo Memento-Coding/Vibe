@@ -1,44 +1,25 @@
-import { createContext, useEffect, useState } from "react";
-import { auth } from "../firebase/firebase";
-import {
-  signInWithPopup,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import React, { createContext, useState } from "react";
+import jwt_decode from "jwt-decode";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userLogin, setUserLogin] = useState(null)
-  const [userLoading, setUserLoading] = useState(null)
-  
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      console.log(user)
-      if(user){
-        setUserLogin(user)
-        setUserLoading(true)
-      }else{
-        setUserLogin(null)
-      }
-    });
-  }, []);
+  const [decodedToken, setDecodedToken] = useState(null);
 
-  console.log(userLoading);
+  const saveTokenToLocalStorage = (token) => {
+    // Guardar el token en el almacenamiento local
+    localStorage.setItem("token", token);
 
-  const login = async () => {
-    const googleProvider = new GoogleAuthProvider();
-    await signInWithPopup(auth, googleProvider);
+    // Decodificar el token
+    const decoded = jwt_decode(token);
+
+    // Guardar el token decodificado en el estado del contexto
+    setDecodedToken(decoded);
   };
-  const cerrarSesion = () => {
-    signOut(auth);
-  }
+
   return (
-    <AuthContext.Provider value={{ login, userLogin, cerrarSesion }}>
+    <AuthContext.Provider value={{ decodedToken, saveTokenToLocalStorage }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-

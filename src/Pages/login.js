@@ -1,34 +1,65 @@
 import "../Styles/login.css";
 import imagen from '../img/wave-sound.png';
 import { Link,useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { useContext, useState, useEffect } from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 import { AuthContext } from "../context/AuthContext";
 
 export function Login() {
+  
   const navigate = useNavigate();
-  const {login} = useContext(AuthContext);
-
-  const handelLogin =async () =>{
-    await login();
-    navigate('/inicio')
-  }
-
-
-  const [user, setUser] = useState("");
+  const { saveTokenToLocalStorage } = useContext(AuthContext);
+  const [emailOrUser, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //console.log(user);
-    //console.log(password);
+ 
+
+// ...
+
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError(""); // Reiniciar el mensaje de error
+
+  if (emailOrUser === "" || password === "") {
+    setError("Todos los campos son obligatorios.");
+    return;
+  }
+
+  try {
+    // Objeto con los datos dinicio de sesión
+    const datosLogin = {
+      emailOrUser,
+      password,
+    };
+
+    
+    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login/", datosLogin, {
+      headers: {
+        "Access-Control-Allow-Origin": "*", // o puedes especificar un origen específico en lugar de "*"
+      },
+    });
+
+    const token = response.data.token;
+    saveTokenToLocalStorage(token);
+    
+      navigate("/inicio");
+    
+    
     
 
-    if (user === "" || password === "") {
-      setError("Todos los campos son obligatorios."); // Establece el mensaje de error en el estado error
-    }
-  };
+    // Restablecer los campos del formulario
+    setUser("");
+    setPassword("");
+    
+  } catch (error) {
+    console.error(error); // Manejar errores en la petición
+  }
+};
+
 
   return (
     <div>
@@ -41,7 +72,7 @@ export function Login() {
         <div className="form-container">
           <div className="title">Iniciar sesion con Vibe</div>
           <div className="google">
-            <button onClick={handelLogin}><FaGoogle/>Google</button>
+            
           </div>
           <div class="crossed-lines"></div>
 
@@ -51,7 +82,7 @@ export function Login() {
                 <label className="email">Email o nombre de usuario: </label>
                 <input
                   type="text"
-                  value={user}
+                  value={emailOrUser}
                   onChange={(e) => setUser(e.target.value)}
                   required
                 />

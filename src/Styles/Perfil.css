@@ -62,6 +62,12 @@
   font-size: 20px;
 }
 
+
+
+
+
+
+
 @media screen and (max-width: 768px) {
   .Container-perfil {
     width: 90%;
@@ -98,6 +104,10 @@
 
   #favoritos {
     font-size: 15px;
+  }
+
+  .btnagregar{
+    font-size: 2px;
   }
 }
 
@@ -143,4 +153,12 @@
   #favoritos {
     font-size: 12px;
   }
+
+  .btnagregar{
+    font-size: 2px;
+  }
 }
+
+
+
+
