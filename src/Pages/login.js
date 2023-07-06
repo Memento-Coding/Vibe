@@ -1,22 +1,16 @@
 import "../Styles/login.css";
 import imagen from '../img/wave-sound.png';
 import { Link,useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
-import { AuthContext } from "../context/AuthContext";
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { AuthContext } from "../context/AuthContext";
 
 export function Login() {
+  
   const navigate = useNavigate();
-  const {login} = useContext(AuthContext);
-
-  const handelLogin =async () =>{
-    await login();
-    navigate('/inicio')
-  }
-
-
-  const [user, setUser] = useState("");
+  const { saveTokenToLocalStorage } = useContext(AuthContext);
+  const [emailOrUser, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); 
 
@@ -24,32 +18,43 @@ export function Login() {
 
 // ...
 
+
+
 const handleSubmit = async (e) => {
   e.preventDefault();
-  console.log(user)
-  console.log(password)
   setError(""); // Reiniciar el mensaje de error
 
-  if (user === "" || password === "") {
+  if (emailOrUser === "" || password === "") {
     setError("Todos los campos son obligatorios.");
     return;
   }
 
   try {
-    // Objeto con los datos de inicio de sesión
+    // Objeto con los datos dinicio de sesión
     const datosLogin = {
-      user,
+      emailOrUser,
       password,
     };
 
     
-    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login/", datosLogin);
+    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login/", datosLogin, {
+      headers: {
+        "Access-Control-Allow-Origin": "*", // o puedes especificar un origen específico en lugar de "*"
+      },
+    });
 
-    console.log(response.data); // Manejar la respuesta de la API
+    const token = response.data.token;
+    saveTokenToLocalStorage(token);
+    
+      navigate("/inicio");
+    
+    
+    
 
     // Restablecer los campos del formulario
     setUser("");
     setPassword("");
+    
   } catch (error) {
     console.error(error); // Manejar errores en la petición
   }
@@ -67,7 +72,7 @@ const handleSubmit = async (e) => {
         <div className="form-container">
           <div className="title">Iniciar sesion con Vibe</div>
           <div className="google">
-            <button onClick={handelLogin}><FaGoogle/>Google</button>
+            
           </div>
           <div class="crossed-lines"></div>
 
@@ -77,7 +82,7 @@ const handleSubmit = async (e) => {
                 <label className="email">Email o nombre de usuario: </label>
                 <input
                   type="text"
-                  value={user}
+                  value={emailOrUser}
                   onChange={(e) => setUser(e.target.value)}
                   required
                 />

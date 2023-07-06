@@ -1,16 +1,19 @@
 import React, { useState, useContext } from 'react';
 import '../Styles/Perfil.css';
-import { AuthContext } from '../context/AuthContext';
 import { Modal, Button } from '@material-ui/core';
 import { useDropzone } from 'react-dropzone';
 import { CloudUploadOutlined } from '@material-ui/icons'; // Importar el icono de Material-UI
 import GenerosFavoritosModalContent from './GenerosFavoritosModalContent';
+import { AuthContext } from '../context/AuthContext';
 
 function Perfil() {
-  const { userLogin } = useContext(AuthContext);
+  const { decodedToken } = useContext(AuthContext);
   const [favoritos, setFavoritos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
+
+  console.log(decodedToken);
+
 
   const openModal = () => {
     setModalOpen(true);
@@ -61,7 +64,7 @@ function Perfil() {
       </div>
       <div className="data-user">
         <h1 id="titulo">Perfil</h1>
-        <h1 id="name-user">{userLogin.displayName}</h1>
+        <h1 id="name-user">{decodedToken.username}</h1>
         <h1 id="numero-canciones">15 canciones favoritas</h1>
       </div>
 

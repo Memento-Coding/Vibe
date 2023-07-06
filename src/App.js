@@ -1,6 +1,4 @@
-
-//import { LeftMenu } from './Components/LeftMenu';
-//import { Header } from './Components/HeaderBar';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Inicio } from './Pages/Inicio';
 import { Explorar } from './Pages/Explorar';
@@ -10,7 +8,6 @@ import { Microfono } from './Pages/Microfono';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
 import { AuthProvider } from './context/AuthContext';
-import { Auth } from './Components/auth/Auth';
 
 function App() {
   return (
@@ -19,22 +16,11 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
-          <Route path="/inicio" element={
-                  <Auth><Inicio /></Auth>
-                  } />
-          <Route path="/microfono" element={
-                  <Auth><Microfono /></Auth>
-                  } />
-          <Route path="/explorar" element={
-                  <Auth><Explorar /></Auth>
-                  } />
-          <Route path="/albums" element={
-                  <Auth><Albums /></Auth>
-                  } />
-          <Route path="/like" element={
-                  <Auth><Like /></Auth>
-                  } />
-        
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/microfono" element={<Microfono />} />
+          <Route path="/explorar" element={<Explorar />} />
+          <Route path="/albums" element={<Albums />} />
+          <Route path="/like" element={<Like />} />
         </Routes>
       </Router>
     </AuthProvider>
