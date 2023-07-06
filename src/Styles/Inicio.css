@@ -58,7 +58,7 @@
   cursor: pointer;
   height: 100%;
   width: 280px;
-  overflow: auto; /* Mostrar el scrollbar solo cuando sea necesario */
+  overflow-y: auto; /* Mostrar el scrollbar solo cuando sea necesario */
   scrollbar-width: thin; /* Ancho del scrollbar */
   scrollbar-color: transparent transparent; /* Color del thumb y del track */
 
