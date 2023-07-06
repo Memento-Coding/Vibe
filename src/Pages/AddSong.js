@@ -14,7 +14,7 @@ function AddSong() {
       const [selectedSong, setSelectedSong] = useState(null);
     
       const handleSongChange = (event) => {
-        setSelectedSon(event.target.files[0]);
+        setSelectedSong(event.target.files[0]);
       };
   /*const onSubmit  = async (data) => {
     const formData = new FormData();
