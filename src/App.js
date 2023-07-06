@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Explorar } from './Pages/Explorar';
-import { Like } from './Pages/Like';
-import { Microfono } from './Pages/Microfono';
+import { AddSong } from './Pages/AddSong';
 import { Login } from './Pages/login';
 import { Register } from './Pages/Register';
 import { AuthProvider } from './context/AuthContext';
-import { Auth } from './Components/auth/Auth';
+//import { Auth } from './Components/auth/Auth';
 import { Perfil } from './Pages/Perfil';
 import { Base } from './Pages/Base';
 import { Inicio } from './Pages/Inicio';
@@ -16,18 +14,12 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/inicio" element={<Auth><Base /></Auth> }>
-            <Route path="/inicio" element={
-                    <Auth><Inicio /></Auth>
+          <Route path="/" element={<Base />}>
+            <Route path="/" element={
+                    <Inicio />
                     } />
-            <Route path="/inicio/explorar" element={
-                    <Explorar />
-                    } />
-            <Route path="/inicio/like" element={
-                    <Like />
-                    } />
-            <Route path="/inicio/microfono" element={
-                    <Microfono />
+            <Route path="/inicio/addsong" element={
+                    <AddSong />
                     } />  
             <Route path="/inicio/perfil" element={<Perfil />} />
             
@@ -35,7 +27,7 @@ function App() {
                    
           
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>

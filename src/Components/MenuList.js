@@ -1,6 +1,5 @@
-import {BsFillHouseFill, BsFillCompassFill} from 'react-icons/bs'
-import {FaMicrophoneAlt} from 'react-icons/fa'
-import {AiFillHeart} from 'react-icons/ai'
+import {BsFillHouseFill} from 'react-icons/bs'
+import { BiAddToQueue } from 'react-icons/bi';
 
 
 const MenuList = [
@@ -8,26 +7,15 @@ const MenuList = [
     id: 1,
     icon: <BsFillHouseFill />,
     name: "Inicio",
-    hrfe: "/inicio"
+    hrfe: "/"
     },
     {
     id: 2,
-    icon: <BsFillCompassFill />,
-    name: "Explorar",
-    hrfe: "/inicio/explorar"
+    icon: <BiAddToQueue />,
+    name: "Agregar",
+    hrfe: "/inicio/addsong"
     },
-    {
-    id: 3,
-    icon: <FaMicrophoneAlt />,
-    name: "Microfono",
-    hrfe: "/inicio/microfono"
-    },
-    {
-    id: 4,
-    icon: <AiFillHeart />,
-    name: "Like",
-    hrfe: "/inicio/like"
-    },
+   
 ];
 
 export { MenuList };
