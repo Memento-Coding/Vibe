@@ -11,12 +11,10 @@ function AddSong() {
   const { register, formState: {errors}, handleSubmit } = useForm();
 
 
-  const fileInputRef1 = useRef(null);
-  const fileInputRef2 = useRef(null);
-      const [selectedFile, setSelectedFile] = useState(null);
+      const [selectedSong, setSelectedSong] = useState(null);
     
-      const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
+      const handleSongChange = (event) => {
+        setSelectedSon(event.target.files[0]);
       };
   /*const onSubmit  = async (data) => {
     const formData = new FormData();
@@ -44,12 +42,12 @@ function AddSong() {
       console.error(error);
     }*/
 
-    const handleFormSubmit = async (data) => {
+    const onSubmit = async (data) => {
       data.preventDefault();
-  
+      
       try {
         const formData = new FormData();
-        formData.append('song', selectedFile);
+        formData.append('song', selectedSong);
   
         const response = await fetch('https://thriving-insect-production.up.railway.app/v1/song/file', {
           method: 'POST',
@@ -85,17 +83,13 @@ function AddSong() {
     <div className='containerForm'>
       <div className='form'>
         <h2>Sube tu canción</h2>
-        <form onSubmit={handleFormSubmit}>
-          <div className='formFile'>
-            <input type='file' name='photo' ref={fileInputRef1} {...register ("file",{
-              required: false,
-            })}/>
-            <br />
-          </div>
-          <div className='formFile'>
-            <input type='file' name='file' ref={fileInputRef2} onChange={handleFileChange}/>
-            <br />
-          </div>
+        <form onSubmit={onSubmit}>
+            <div className='formFile'>
+              <input type='file' name='photo' onChange={handleSongChange}/>
+              <br />
+              <input type='file' name='file' onChange={handleSongChange}/>
+              <br />
+            </div>
           <div className='formText'>
             <div className='nameSong'>
               <label>Nombre</label> <br/> <br/>
