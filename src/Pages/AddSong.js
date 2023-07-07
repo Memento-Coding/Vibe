@@ -6,7 +6,7 @@ function AddSong() {
 
   
 
-
+      const token = localStorage.getItem('token');
 
       const [selectedSong, setSelectedSong] = useState(null);
       const [selectedFile, setSelectedFile] = useState(null);
@@ -82,12 +82,12 @@ function AddSong() {
             console.log("ID DCE LA CANCIÓN " + dataCreateSong.newSong._id);
             const responseFile = await fetch(`https://thriving-insect-production.up.railway.app/v1/image/song/${dataCreateSong.newSong._id}`, {
               headers:{
-                'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdvZHpwbGEiLCJfaWQiOiI2NDhiZmU2MmFjNDYzNjJiYTE0MjFjZWEiLCJpYXQiOjE2ODg3MDYxODQsImV4cCI6MTY4ODcyNzc4NH0.b0xDTZMA4aRRxJ4FH4YkSUuwS8WGFESS_1Ffw80ycZU',
+                'Authorization':`Bearer ${token}`,
                 'Access-Control-Allow-Origin': '*'
               },
               mode: "cors",
               method: 'PUT',
-              body: formDataFile
+              body: formDataFile,
             });
 
             if (responseFile.ok) {
