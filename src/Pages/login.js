@@ -38,7 +38,7 @@ const handleSubmit = async (e) => {
     };
 
     
-    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login/", datosLogin, {
+    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/user/login/", datosLogin, {
       headers: {
         "Access-Control-Allow-Origin": "*", // o puedes especificar un origen específico en lugar de "*"
       },

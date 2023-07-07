@@ -74,7 +74,7 @@ export function Register() {
       };
 
       const response = await axios.post(
-        "https://thriving-insect-production.up.railway.app/v1/register",
+        "https://thriving-insect-production.up.railway.app/v1/user/register",
         datosRegistro
       );
 
