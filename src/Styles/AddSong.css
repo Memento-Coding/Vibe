@@ -8,12 +8,12 @@
 
 .form{
   width: 80%;
+  margin: 10px 0px 10px 40px;
+  height: -moz-fit-content;
   height: fit-content;
-  
 }
 
 .form form{
-  background-color: #FFFFFF33;
   padding: 30px;
   width: 100%;
   border-radius: 35px;

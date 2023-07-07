@@ -1,51 +1,61 @@
 .login-container {
-  font-family: Poppins;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
-  height: 100vh;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 1) 20%,
-    rgba(128, 29, 230, 1) 100%,
-    rgba(145, 75, 217, 1) 100%,
-    rgba(182, 94, 255, 1) 100%
+    #9D3FE7 100%,
+    #9D3FE7 100%,
+    #9D3FE7 100%
   );
   color: #ffff;
 }
 
-.image,
-.title-logo {
-  display: inline-block;
+
+.imagenLogoInicio{
+  width: 150px;
+  margin: 3rem 0rem 2rem 5rem;
 }
 
-.image {
-  width: 80px;
-  height: 30px;
-}
 
-.title-logo {
-  font-size: 45px;
-  margin-bottom: 50px;
-  color: white;
-}
 
 .form-container {
   background-color: rgb(0, 0, 0);
   border-radius: 15px;
-  padding: 1rem;
+  /* padding: 1rem; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .title {
   font-size: 30px;
   margin-left: 13.5%;
+  margin-top: 10px;
   color: white;
 }
+.btnContainerGoogle{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  margin-right: 80px;
+  margin-top: 20px;
+  margin-bottom: 37px;
+  padding: 10px;
+}
 
+.btnContainerGoogle:hover{
+  background: #fff;
+  color: #000;
+}
+
+.iconoGoogle{
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
 .google {
   border-radius: 40px;
   margin: 10px;
@@ -81,15 +91,14 @@ input {
   justify-content: center;
 }
 
-button {
-  background-color: #290caa;
+.btnIniciarSesion {
+  background-color: #9D3FE7;
   color: white;
   padding: 10px 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  width: 93%;
-  margin-bottom: 20px;
+  width: 100%;
   margin-top: 10px;
 }
 
@@ -102,9 +111,15 @@ button {
 }
 
 .linkregister {
-  margin-left: 20%;
+  color: #fff;
+  margin-left: 14%;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
-
+.etiquetaVipeRegister{
+  color: #9D3FE7;
+  text-decoration: none;
+}
 p {
   margin-left: 20%;
 }

@@ -30,6 +30,7 @@
     "react-slick": "^0.29.0",
     "sass": "^1.63.6",
     "slick-carousel": "^1.8.1",
+    "typeface-poppins": "^1.1.13",
     "web-vitals": "^2.1.4",
     "wouter": "^2.11.0"
   },

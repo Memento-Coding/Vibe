@@ -1,10 +1,11 @@
 import "../Styles/login.css";
-import imagen from '../img/wave-sound.png';
+import imagen from '../assets/img/Vibe logo.png';
 import { Link,useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { AuthContext } from "../context/AuthContext";
+import { FcGoogle } from 'react-icons/fc'
 
 export function Login() {
   
@@ -63,14 +64,14 @@ const handleSubmit = async (e) => {
 
   return (
     <div>
+      <img className="image imagenLogoInicio" src={imagen} alt="Imagen" />
       <div className="login-container">
         <div className="container-vibe">
-          <img className="image" src={imagen} alt="Imagen" />
-          <div className="title-logo">Vibe</div>
         </div>
 
         <div className="form-container">
-          <div className="title">Iniciar sesion con Vibe</div>
+          <div className="title">Iniciar sesion en Vibe</div>
+          <p className="btnContainerGoogle"><FcGoogle className="iconoGoogle"/>continuar con Google</p>
           <div className="google">
             
           </div>
@@ -98,7 +99,7 @@ const handleSubmit = async (e) => {
               </div>
               <div className="button-container">
                 <Link to="/inicio">
-                  <button onClick={handleSubmit} type="button">
+                  <button className="btnIniciarSesion" onClick={handleSubmit} type="button">
                     Iniciar Sesion
                   </button>
                 </Link>
@@ -108,9 +109,9 @@ const handleSubmit = async (e) => {
           </div>
           <div class="crossed-lines"></div>
 
-          <a href="/register"  className="linkregister" >
-            ¿No tienes cuenta? Registrate aqui
-          </a>
+          <p   className="linkregister" >
+            ¿No tienes cuenta? Registrate en <a href="/register" className="etiquetaVipeRegister">Vibe</a>
+          </p>
         </div>
       </div>
     </div>
