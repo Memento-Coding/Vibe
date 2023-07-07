@@ -110,7 +110,7 @@ const handleSubmit = async (e) => {
           <div class="crossed-lines"></div>
 
           <p   className="linkregister" >
-            ¿No tienes cuenta? Registrate en <a href="/register" className="etiquetaVipeRegister">Vibe</a>
+            ¿No tienes cuenta? Registrate en <Link to={"/register"} className="etiquetaVipeRegister">Vibe</Link>
           </p>
         </div>
       </div>
