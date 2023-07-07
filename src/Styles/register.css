@@ -1,12 +1,10 @@
 .login-container1 {
-  font-family: Poppins;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
   height: 100vh;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 1) 20%,
@@ -20,36 +18,42 @@
 .container-vibe1 {
   margin-right: 5%;
 }
-
-.image1,
-.title-logo1 {
-  display: inline-block;
-}
-
-.image1 {
-  width: 80px;
-  height: 30px;
-}
-
-.title-logo1 {
-  font-size: 45px;
-  margin-bottom: 50px;
-  color: white;
-}
-
 .form-container1 {
-  background-color: rgb(0, 0, 0);
   border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 35%;
 }
 
+.imagenLogoRegistrar {
+  width: 150px;
+  margin: 0rem 0rem -2rem 5rem;
+}
+.title1Principal {
+  font-size: 20px;
+  margin-left: 60px;
+  margin-bottom: 35px;
+}
 .title1 {
   font-size: 30px;
   margin-left: 2px;
   color: white;
 }
-
+.btnContainerGoogleRegistrar {
+  display: flex;
+  background: #000;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  margin-right: 80px;
+  margin-top: 20px;
+  margin-bottom: 37px;
+  padding: 10px;
+}
+.btnContainerGoogleRegistrar:hover {
+  background: #fff;
+  color: #000;
+}
 .google-register {
   border-radius: 40px;
   margin: 10px;
@@ -58,7 +62,7 @@
 .ast {
   width: 100%;
   justify-content: center;
-  max-width: 500px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
@@ -99,19 +103,35 @@ input {
   margin-top: 10px;
 }
 
-button {
-  background-color: #290caa;
+.btnRegistrar {
+  background-color: #9d3fe7;
   color: white;
   padding: 10px 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  width: 100%;
+  margin-top: 10px;
+  width: 70%;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.btnRegistrar:hover {
+  background-color: #7a0fcb;
 }
 
 .crossed-lines1 {
   width: 100%;
   max-width: 520px;
+  margin-bottom: 20px;
+  height: 1px;
+  background-color: white;
+  background-size: 8px 8px;
+}
+.crossed-lines2 {
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 20px;
   height: 1px;
   background-color: white;
   background-size: 8px 8px;
@@ -119,6 +139,9 @@ button {
 
 .linkregister1 {
   margin-left: 20%;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 40px;
 }
 
 .errorRegister {
@@ -131,32 +154,29 @@ button {
   .ast {
     width: 100%;
   }
-  
+
   .email1 {
     margin-right: 5%;
   }
-  
+
   .password1 {
     margin-right: 5%;
   }
-  
+
   .input-container1 {
     margin: 5px;
   }
-  
+
   button {
     width: 100%;
   }
-  
+
   .crossed-lines1 {
     width: 100%;
   }
-  
+
   .linkregister1,
   .errorRegister {
     margin-left: 13.5%;
   }
 }
-
-  
-  

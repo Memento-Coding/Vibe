@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import imagen from "../img/wave-sound.png";
+import imagen from "../assets/img/Vibe logo.png";
 import "../Styles/register.css";
 import axios from "axios";
 import { Modal, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { FcGoogle } from 'react-icons/fc'
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -92,12 +93,12 @@ export function Register() {
     <section>
       <div className="login-container1">
         <div className="container-vibe1">
-          <img className="image1" src={imagen} alt="Imagen" />
-          <div className="title-logo1">Vibe</div>
+          <img className="image1 imagenLogoRegistrar" src={imagen} alt="Imagen" />
         </div>
 
         <div className="form-container1">
-          <div className="title1">Registrate gratis para escuchar.</div>
+          <div className="title1Principal">Registrate gratis para escuchar.</div>
+          <p className="btnContainerGoogleRegistrar"><FcGoogle className="iconoGoogle"/>continuar con Google</p>
 
           <div className="crossed-lines1"></div>
 
@@ -131,14 +132,14 @@ export function Register() {
                 />
               </div>
               <div className="button-container1">
-                <button onClick={handleSubmit} type="button">
+                <button onClick={handleSubmit} className="btnRegistrar" type="button">
                   Regístrate
                 </button>
               </div>
             </form>
             {error && <p className="errorRegister">{error}</p>}
           </div>
-          <div className="crossed-lines1"></div>
+          <div className="crossed-lines2"></div>
 
           <a href="/" className="linkregister1">
             ¿Ya tienes cuenta? Iniciar sesión
