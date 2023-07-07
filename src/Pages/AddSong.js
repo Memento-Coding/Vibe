@@ -12,53 +12,76 @@ function AddSong() {
 
 
       const [selectedSong, setSelectedSong] = useState(null);
+      const [selectedFile, setSelectedFile] = useState(null);
     
       const handleSongChange = (event) => {
         setSelectedSong(event.target.files[0]);
       };
-  /*const onSubmit  = async (data) => {
-    const formData = new FormData();
-    const formData2 = new FormData();
-    const photoFile = fileInputRef1.current?.files?.[0] || null;
-    const fileFile = fileInputRef2.current?.files?.[0] || null;
 
-    
-    formData.append('file', photoFile);
-    formData2.append('song', fileFile);
+      const handleFileChange = (event2) => {
+        setSelectedFile(event2.target.files[0]);
+      };
 
-    console.log(data);
-    /*try {
-      const response = await fetch('https://thriving-insect-production.up.railway.app/v1/image/song/648bfe62ac46362ba1421cea', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      // Maneja la respuesta del servidor
-      console.log(response.data);
-    } catch (error) {
-      // Maneja los errores
-      console.error(error);
-    }*/
+
 
     const onSubmit = async (data) => {
       data.preventDefault();
       
       try {
-        const formData = new FormData();
-        formData.append('song', selectedSong);
+        const formSong = new FormData();
+        formSong.append('song', selectedSong);
+
+        const formFile = new FormData();
+        formFile.append('file', selectedFile);
+
+        
   
-        const response = await fetch('https://thriving-insect-production.up.railway.app/v1/song/file', {
+        const response1 = await fetch('https://thriving-insect-production.up.railway.app/v1/song/file', {
           method: 'POST',
-          body: formData,
+          body: formSong,
         });
+
+        const datosSong = await response1.json()
   
-        if (response.ok) {
-          const data = await response.json();
+        if (response1.ok) {
           console.log('Respuesta de la API:', data);
-          console.log(response.status);
+          console.log(response1.status);
           console.log('El archivo se envió correctamente.');
+
+          let datosFile = null;
+
+          if(response1.ok){
+            const response2 = await fetch('https://thriving-insect-production.up.railway.app/v1/image/song/648bfe62ac46362ba1421cea', {
+              method: 'POST',
+              body: formFile,
+            });
+            if (response2.ok){
+              datosFile = await response2.json();
+            }else{
+              console.error('Error en la segunda petición a la API');
+            }
+          }
+
+          const formData = new FormData();
+          formData.append("name", data.name);
+          formData.append('artist', data.artist);
+          formData.append('genre', data.genre);
+          formData.append('image', datosFile);
+          formData.append('file', datosSong);
+
+
+          const response3 = await fetch('',{
+            method: 'POST',
+            body: formData,
+          });
+
+          if (response3.ok){
+            console.log('Respuesta de la API:', data);
+            console.log(response3.status);
+          }else {
+            console.error('Error al enviar el archivo.');
+          }
+
         } else {
           console.error('Error al enviar el archivo.');
         }
@@ -66,26 +89,15 @@ function AddSong() {
         console.error('Error en la solicitud:', error);
       }
     };
-    /*try {
-      const response = await fetch('https://thriving-insect-production.up.railway.app/v1/song/file', {
-        method: 'POST',
-        body: formData2,
-      });
-      // Maneja la respuesta del servidor
-      console.log(response.data);
-    } catch (error) {
-      // Maneja los errores
-      console.error(error);
-    }*/
   
 
   return (
     <div className='containerForm'>
       <div className='form'>
         <h2>Sube tu canción</h2>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className='formFile'>
-              <input type='file' name='photo' onChange={handleSongChange}/>
+              <input type='file' name='photo' onChange={handleFileChange}/>
               <br />
               <input type='file' name='file' onChange={handleSongChange}/>
               <br />
