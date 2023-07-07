@@ -14,8 +14,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/inicio" element={<Base />}>
-            <Route path="/inicio" element={
+          <Route path="/" element={<Base />}>
+            <Route path="/" element={
                     <Inicio />
                     } />
             <Route path="/inicio/addsong" element={
@@ -27,7 +27,7 @@ function App() {
                    
           
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>
