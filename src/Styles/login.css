@@ -92,7 +92,10 @@ button {
   margin-bottom: 20px;
   margin-top: 10px;
 }
+.btnIniciarSesion:hover {
+  background-color: #6b04ba;
 
+}
 .crossed-lines {
   width: 100%;
   max-width: 420px;
