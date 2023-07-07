@@ -147,7 +147,23 @@ input {
 .errorRegister {
   margin-left: 20%;
 }
+.makeStyles-paper-2{
+  background: #f0f0f0 !important;
+  border-radius: 15px !important;
+  color: #000 !important;
+  border: none !important;
+  font-family: 'Poppins' !important;
+}
 
+.makeStyles-message-3{
+  color: #000 !important;
+  margin-bottom: 20px;
+}
+
+.makeStyles-buttom-4 {
+  background: #9d3fe7 !important;
+  font-family: 'Poppins' !important;
+}
 /* Estilos adicionales para hacerlo responsive */
 
 @media (max-width: 768px) {
