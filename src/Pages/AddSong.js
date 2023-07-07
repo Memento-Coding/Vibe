@@ -1,93 +1,112 @@
-import React, { useState, useRef } from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useState } from 'react'
 import '../Styles/AddSong.css'
-import axios from 'axios';
+
 
 function AddSong() {
 
   
 
 
-  const { register, formState: {errors}, handleSubmit } = useForm();
-
 
       const [selectedSong, setSelectedSong] = useState(null);
       const [selectedFile, setSelectedFile] = useState(null);
+      const [name, setName] = useState('');
+      const [artist, setArtist] = useState('');
+      const [genre, setGenre] = useState('');
     
       const handleSongChange = (event) => {
         setSelectedSong(event.target.files[0]);
       };
 
-      const handleFileChange = (event2) => {
-        setSelectedFile(event2.target.files[0]);
+      const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+      };
+
+      const handleNameChange = (event) => {
+        setName(event.target.value);
+      };
+
+      const handleArtistChange = (event) => {
+        setArtist(event.target.value);
+      };
+    
+      const handleGenreChange = (event) => {
+        setGenre(event.target.value);
       };
 
 
 
     const onSubmit = async (data) => {
       data.preventDefault();
-      
+
+
+
       try {
-        const formSong = new FormData();
-        formSong.append('song', selectedSong);
-
-        const formFile = new FormData();
-        formFile.append('file', selectedFile);
-
-        
-  
-        const response1 = await fetch('https://thriving-insect-production.up.railway.app/v1/song/file', {
+        let formDataSong = new FormData();
+        formDataSong.append('song', selectedSong);
+        let photo = "https://vibe-data-structure.s3.amazonaws.com/photo/Default.png";
+        const responseFileSong = await fetch('https://thriving-insect-production.up.railway.app/v1/song/file', {
           method: 'POST',
-          body: formSong,
+          body: formDataSong
         });
+        if (responseFileSong.ok) {
+          console.log(name);
+          console.log('La canción se envió correctamente.');
+          const dataFileSong = await responseFileSong.json();
 
-        const datosSong = await response1.json()
-  
-        if (response1.ok) {
-          console.log('Respuesta de la API:', data);
-          console.log(response1.status);
-          console.log('El archivo se envió correctamente.');
+          const newSong = {
+            name: name,
+            artist: artist,  
+            genre: genre,
+            duration: "2:40",
+            file: dataFileSong.url
+          };
+          console.log(JSON.stringify(newSong));
 
-          let datosFile = null;
-
-          if(response1.ok){
-            const response2 = await fetch('https://thriving-insect-production.up.railway.app/v1/image/song/648bfe62ac46362ba1421cea', {
-              method: 'POST',
-              body: formFile,
-            });
-            if (response2.ok){
-              datosFile = await response2.json();
-            }else{
-              console.error('Error en la segunda petición a la API');
-            }
-          }
-
-          const formData = new FormData();
-          formData.append("name", data.name);
-          formData.append('artist', data.artist);
-          formData.append('genre', data.genre);
-          formData.append('image', datosFile);
-          formData.append('file', datosSong);
-
-
-          const response3 = await fetch('',{
+          const responseCreateSong = await fetch('https://thriving-insect-production.up.railway.app/v1/song', {
             method: 'POST',
-            body: formData,
+            body: JSON.stringify(newSong),
+            headers: {
+              "Content-Type": "application/json",
+            },
           });
+          if (responseCreateSong.ok) {
+            const dataCreateSong = await responseCreateSong.json();
+            console.log('Respuesta de la API de creación de canción:', dataCreateSong);
+            console.log(responseCreateSong.status);
+            console.log('La canción se creó correctamente.');
+            
+            if (selectedFile) {
+            let formDataFile = new FormData();
+            formDataFile.append('file', selectedFile);
+            console.log("ID DCE LA CANCIÓN " + dataCreateSong.newSong._id);
+            const responseFile = await fetch(`https://thriving-insect-production.up.railway.app/v1/image/song/${dataCreateSong.newSong._id}`, {
+              headers:{
+                'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdvZHpwbGEiLCJfaWQiOiI2NDhiZmU2MmFjNDYzNjJiYTE0MjFjZWEiLCJpYXQiOjE2ODg3MDYxODQsImV4cCI6MTY4ODcyNzc4NH0.b0xDTZMA4aRRxJ4FH4YkSUuwS8WGFESS_1Ffw80ycZU',
+                'Access-Control-Allow-Origin': '*'
+              },
+              mode: "cors",
+              method: 'PUT',
+              body: formDataFile
+            });
 
-          if (response3.ok){
-            console.log('Respuesta de la API:', data);
-            console.log(response3.status);
-          }else {
-            console.error('Error al enviar el archivo.');
+            if (responseFile.ok) {
+              console.log('La foto se envió correctamente.');
+              ////Modal de Todo OK
+            }
+          }else{
+            ////Modal de Todo OK
+          }
+          } else {
+            console.error('Error al crear la canción:', responseCreateSong.status);
           }
 
-        } else {
-          console.error('Error al enviar el archivo.');
         }
-      } catch (error) {
+      }catch (error) {
         console.error('Error en la solicitud:', error);
       }
+
+          
     };
   
 
@@ -95,7 +114,7 @@ function AddSong() {
     <div className='containerForm'>
       <div className='form'>
         <h2>Sube tu canción</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
             <div className='formFile'>
               <input type='file' name='photo' onChange={handleFileChange}/>
               <br />
@@ -105,24 +124,15 @@ function AddSong() {
           <div className='formText'>
             <div className='nameSong'>
               <label>Nombre</label> <br/> <br/>
-              <input type='text' {...register("name", {
-                required: false,
-              })}/>
-              {errors.name?.type === 'required' && <p>El campo Nombre esta vacio</p>}
+              <input type='text' value={name} onChange={handleNameChange}/>
             </div>
             <div className='artistSong'>
               <label>Artista</label><br/>
-              <input type='text' {...register("artist", {
-                required: false,
-              })}/>
-              {errors.name?.type === 'required' && <p>El campo Artista esta vacio</p>}
+              <input type='text' value={artist} onChange={handleArtistChange}/>
             </div>
             <div className='genreSong'>
               <label>Genero</label><br/>
-              <input type='text' {...register("genre", {
-                required: false,
-              })}/>
-              {errors.name?.type === 'required' && <p>El campo Genero esta vacio</p>}
+              <input type='text' value={genre} onChange={handleGenreChange}/>
             </div>
           </div>
           
