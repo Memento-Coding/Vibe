@@ -1,11 +1,10 @@
 import "../Styles/login.css";
 import imagen from '../assets/img/Vibe logo.png';
 import { Link,useNavigate } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FcGoogle } from 'react-icons/fc'
+import axios from "axios";
 
 export function Login() {
   
@@ -37,14 +36,18 @@ const handleSubmit = async (e) => {
       password,
     };
 
+
+    console.log(datosLogin);
     
-    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/user/login/", datosLogin, {
+    
+
+    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login/", datosLogin, {
       headers: {
-        "Access-Control-Allow-Origin": "*", // o puedes especificar un origen específico en lugar de "*"
+        "Access-Control-Allow-Origin": "*", 
       },
     });
 
-    const token = response.data.token;
+    const token = await response.data?.token;
     saveTokenToLocalStorage(token);
     
       navigate("/inicio");
