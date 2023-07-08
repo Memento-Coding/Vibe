@@ -6,6 +6,11 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { gapi } from "gapi-script"
 import GoogleLogin from "react-google-login";
+import { Link,useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { FcGoogle } from 'react-icons/fc'
+import axios from "axios";
 
 export function Login() {
 
@@ -14,13 +19,7 @@ export function Login() {
   const [emailOrUser, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-
-
-  // ...
-
-
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Reiniciar el mensaje de error
@@ -46,12 +45,28 @@ export function Login() {
 
       const token = response.data.token;
       saveTokenToLocalStorage(token);
+  try {
+    // Objeto con los datos dinicio de sesión
+    const datosLogin = {
+      emailOrUser,
+      password,
+    };
 
+
+    console.log(datosLogin);
+    
+    
+
+    const response = await axios.post("https://thriving-insect-production.up.railway.app/v1/login/", datosLogin, {
+      headers: {
+        "Access-Control-Allow-Origin": "*", 
+      },
+    });
+
+    const token = await response.data?.token;
+    saveTokenToLocalStorage(token);
       navigate("/inicio");
-
-
-
-
+    
       // Restablecer los campos del formulario
       setUser("");
       setPassword("");

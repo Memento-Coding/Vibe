@@ -10,16 +10,23 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function Inicio() {
+
+  const token = localStorage.getItem('token');
   const [song5, setSong5] = useState([]);
   const [song, setSong] = useState(song5[0]?.file);
   const [img, setImage] = useState(song5[0]?.photo);
 
   const [song6, setSong6] = useState([]);
+  const [genres, setGenres] = useState([]);
+  
+
 
   const setMainSong = (songSrc, imgSrc) => {
     setSong(songSrc);
     setImage(imgSrc);
   };
+
+  
 
   useEffect(() => {
     const getSong6 = async () => {
@@ -47,6 +54,26 @@ function Inicio() {
     getSong5();
   }, []);
 
+  useEffect(() => {
+    const getGenre = async () => {
+      try {
+        const response = await axios.get('https://thriving-insect-production.up.railway.app/v1/user/myMusicalGenres',{
+          headers: {
+            'Authorization':`Bearer ${token}`,
+            'Access-Control-Allow-Origin': '*'
+          },
+        });
+        const dataGenre = response.data.response.MisGeneros;
+        setGenres(dataGenre);
+      } catch (error) {
+        console.error('Error fetching genres', error);
+      }
+    };
+    getGenre();
+  }, []);
+
+  console.log(genres);
+
   // Configuración del slider
   const sliderSettings = {
     dots: true,
@@ -60,20 +87,17 @@ function Inicio() {
     <div className='mainInicio'>
       <div className='top'>
         <Slider {...sliderSettings}>
-          {song5.map((song) => (
-            <div key={song.id} className='songs2' onClick={() => setMainSong(song?.file, song?.photo)}>
-              <div className='song2'>
-              <div className='imgBox2'>
+          {song6.map((song) => (
+            <div key={song.id} className='genres'>
+            <div className='genre'>
+              <div className='imgBox'>
                 <img src={song?.photo} alt={song?.name} />
               </div>
-              <div className='section2'>
+              <div className='section'>
                 <p>{song?.name}<br/>{song.artist}</p>
-                <i>
-                  <BsPlayCircleFill/>
-                </i>
               </div>
             </div>
-            </div>
+          </div>
           ))}
         </Slider>
       </div>

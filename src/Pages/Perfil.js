@@ -5,6 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import GenerosFavoritosModalContent from '../Components/GenerosFavoritosModalContent';
 import { AuthContext } from '../context/AuthContext';
+import { Table } from '../Components/Table'
 
 function Perfil() {
   const { decodedToken } = useContext(AuthContext);
@@ -83,6 +84,8 @@ function Perfil() {
           </Button>
         )}
       </div>
+
+      <Table/>
 
       <Modal open={modalOpen} onClose={closeModal}>
         <GenerosFavoritosModalContent

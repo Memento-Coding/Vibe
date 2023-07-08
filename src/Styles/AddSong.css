@@ -6,47 +6,142 @@
   justify-content: center;
 }
 
-.form{
-  width: 80%;
-  margin: 10px 0px 10px 40px;
-  height: -moz-fit-content;
-  height: fit-content;
+.containerForm .title{
+  margin: 0;
 }
 
-.form form{
-  padding: 30px;
-  width: 100%;
-  border-radius: 35px;
-}
-
-.form h2{
+.containerForm .form .title h2{
   text-align: center;
   color: white;
-  font-size: 44px;
+  font-size: 35px;
 }
 
-.form .formText input{
+.containerForm .form{
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Mostrar el scrollbar solo cuando sea necesario */
+  scrollbar-width: thin; /* Ancho del scrollbar */
+  scrollbar-color: transparent transparent; /* Color del thumb y del track */
+
+  /* Ocultar el scrollbar */
+  -ms-overflow-style: none; /* Para IE y Edge */
+  scrollbar-width: none; /* Para Firefox */
+}
+
+.containerForm .form::-webkit-scrollbar {
+  width: 0.5em; /* Ancho del scrollbar */
+}
+
+.containerForm .form::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Color del thumb */
+}
+
+.containerForm .form::-webkit-scrollbar-track {
+  background-color: transparent; /* Color del track */
+}
+
+.containerForm .form form{
+  width: 100%;
+  border-radius: 35px;
+  background: #FFFFFF33;
+  padding-bottom: 3%;
+}
+
+.containerForm .form form .insideForm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.containerForm .form .formFile{
+  margin-right: 10%;
+}
+
+.containerForm .form .formFile p {
+  width: 220px;
+  height: 50px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.containerForm .form .formFile label{
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  height: 50px;
+  width: 220px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.containerForm .form .formFile .uploadImage{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.containerForm .form .formFile .uploadSong{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerForm .form .formText{
+  width: 50%;
+  
+}
+
+.containerForm .form .formText input{
+  border-radius: 10px;
+    height: 30px;
+    background: #D6D6D6;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.containerForm .form .formFile #photo{
+  display: none !important;
+}
+
+.containerForm .form .formFile #file{
+  display: none !important;
+}
+
+
+
+.containerForm .form .formText .nameSong {
+  margin: 30px 0px 30px 0px;
+}
+
+.containerForm .form .formText .artistSong {
+  margin: 30px 0px 30px 0px;
+}
+
+.containerForm .form .formText .genreSong {
+  margin: 30px 0px 50px 0px;
+}
+
+.containerForm .form .formText .genreSong select{
   background: #D6D6D6;
   border: none;
-  border-radius: 10px;
-  width: 300px;
-}
-
-.form .formText .nameSong {
-  margin: 30px;
-}
-
-.form .formText .artistSong {
-  margin: 30px;
-}
-
-.form .formText .genreSong {
-  margin: 30px;
-  margin-bottom: 50px;
+  border-radius: 8px;
+  width: 100%;
+  height: 30px;
 }
 
 
-.botonEnviar{
+.containerForm .form form .botonEnviar{
   color: #FFFFFF;
   background: #8A12B4;
   border-radius: 10px;
@@ -54,5 +149,7 @@
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   font-weight: bold;
   font-size: 18px;
-  width: 100px;
+  height: 40px;
+  width: 150px;
+  padding: 0;
 }
