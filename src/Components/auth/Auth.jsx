@@ -7,6 +7,4 @@ export function Auth({children}){
     if(userLoading) return <h1>Cargando..</h1>
     if(!userLogin) return <Navigate to='/' />
     return <>{children}</>
-        
-    
 }
